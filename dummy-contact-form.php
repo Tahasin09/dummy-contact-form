@@ -45,6 +45,8 @@ class Dummy_Contact_Form
             \UUPD\V1\UUPD_Updater_V1::register($updater_config);
         }, 1);
 
+        add_action('admin_notices', 'dcf_new_version_notification');
+
 
         // add_action('init', array($this, 'create_custom_post_type'));
         // add_action('admin_menu', array($this, 'add_custom_submenus'));
@@ -59,6 +61,21 @@ class Dummy_Contact_Form
         // //register rest api
         // add_action('rest_api_init', array($this, 'register_rest_api'));
     }
+    function dcf_new_version_notification()
+    {
+        // Check for plugin update
+        $current_version = '2.0.0';  // Replace with current version
+        $latest_version = get_option('dummy_contact_form_latest_version');  // This should come from your update system or manually set
+
+        if ($latest_version && version_compare($latest_version, $current_version, '>')) {
+?>
+            <div class="notice notice-success is-dismissible">
+                <p><strong>New Version Available:</strong> Version <?php echo esc_html($latest_version); ?> of Dummy Contact Form is now available. <a href="<?php echo admin_url('plugins.php'); ?>">Update Now</a>.</p>
+            </div>
+        <?php
+        }
+    }
+
 
     function initialize()
     {
@@ -264,7 +281,7 @@ class Dummy_Contact_Form
     public function loadScripts()
     {
         // ob_start();
-?>
+        ?>
         <!-- <script>
             // (function($) {
             //     console.log('wow');
