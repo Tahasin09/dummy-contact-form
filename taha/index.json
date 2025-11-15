@@ -1,7 +1,7 @@
 {
     "slug": "dummy-contact-form",
     "name": "Dummy Contact Form",
-    "version": "2.12.0",
+    "version": "2.13.0",
     "author": "Tahasin",
     "author_homepage": "https://w3eden.com",
     "requires_php": "8.0",
