@@ -27,6 +27,23 @@ class Dummy_Contact_Form
         add_action('plugins_loaded', array($this, 'initialize'));
 
         add_action('init', array($this, 'create_submission_page'));
+        add_action('plugins_loaded', function () {
+
+            require_once __DIR__ . '/includes/updater.php';
+
+            $updater_config = [
+                'plugin_file'   => plugin_basename(__FILE__),
+                'slug'          => 'dummy-contact-form', // folder name
+                'name'          => 'Dummy Contact Form',
+                'version'       => '1.0.0',  // match your plugin header
+                'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
+                'github_token'  => '', // optional, leave empty for public repo
+                // 'allow_prerelease' => true, // enable if you use beta releases
+            ];
+
+            \UUPD\V1\UUPD_Updater_V1::register($updater_config);
+        }, 1);
+
 
         // add_action('init', array($this, 'create_custom_post_type'));
         // add_action('admin_menu', array($this, 'add_custom_submenus'));
