@@ -3,7 +3,7 @@
 Plugin Name: Dummy Contact Form
 Plugin URI: https://example.com/dummy-contact-form
 Description: A simple dummy contact form plugin for testing purposes.
-Version: 1.0.0
+Version: 2.0.0
 Author: Tahasin
 Author URI: https://w3eden.com
 License: GPL2
@@ -29,13 +29,14 @@ class Dummy_Contact_Form
         add_action('init', array($this, 'create_submission_page'));
         add_action('plugins_loaded', function () {
 
-            require_once __DIR__ . '/includes/updater.php';
+            require_once ABSPATH . 'wp-content/plugins/dummy-contact-form/includes/updater.php';
+
 
             $updater_config = [
                 'plugin_file'   => plugin_basename(__FILE__),
                 'slug'          => 'dummy-contact-form', // folder name
                 'name'          => 'Dummy Contact Form',
-                'version'       => '1.0.0',  // match your plugin header
+                'version'       => '2.0.0',  // match your plugin header
                 'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
                 'github_token'  => '', // optional, leave empty for public repo
                 // 'allow_prerelease' => true, // enable if you use beta releases

@@ -4,7 +4,6 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 use Carbon_Fields\Block;
 
-
 add_action('after_setup_theme', 'load_carbon_fields');
 add_action('carbon_fields_register_fields', 'create_options');
 
@@ -14,13 +13,12 @@ function load_carbon_fields()
     \Carbon_Fields\Carbon_Fields::boot();
 }
 
-
 function create_options()
 {
-    Container::make('theme_options', __('Contact Form'))->set_icon('dashicons-forms')
+    Container::make('theme_options', __('Contact Form'))
         ->add_fields(array(
             Field::make('checkbox', 'contact_form_active', 'Active')
-                ->set_option_value('yes'),
+                ->set_default_value('yes'),
             Field::make('text', 'contact_form_emails', 'Emails')
                 ->set_attribute('placeholder', 'Enter your email address here..')
                 ->set_help_text('Email that the form is submitted to'),
@@ -28,7 +26,6 @@ function create_options()
                 ->set_attribute('placeholder', 'Enter your confirmation message here..')
                 ->set_help_text('Message sent after the confirmation'),
             Field::make('media_gallery', 'crb_media_gallery')
-                ->set_type(array('image', 'video'))
                 ->set_help_text('Add images or videos')
         ));
 }
