@@ -23,7 +23,7 @@ function handle_form_submission($data)
     // var_dump($params);
 
     if (!wp_verify_nonce($params['_wpnonce'], 'wp_rest')) {
-        return new WP_REST_Response('Invalid nonce', 403);
+        return new WP_REST_Response('Invalid nonce!!', 403);
     }
 
     unset($params['_wp_http_referer']);
