@@ -3,7 +3,7 @@
 Plugin Name: Dummy Contact Form
 Plugin URI: https://example.com/dummy-contact-form
 Description: A simple dummy contact form plugin for testing purposes.
-Version: 2.7.0
+Version: 2.8.0
 Author: Tahasin
 Author URI: https://w3eden.com
 License: GPL2
@@ -36,7 +36,7 @@ class Dummy_Contact_Form
                 'plugin_file'   => plugin_basename(__FILE__),
                 'slug'          => 'dummy-contact-form', // folder name
                 'name'          => 'Dummy Contact Form',
-                'version'       => '2.7.0',  // match your plugin header
+                'version'       => '2.8.0',  // match your plugin header
                 'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
                 'github_token'  => '', // optional, leave empty for public repo
                 // 'allow_prerelease' => true, // enable if you use beta releases
@@ -63,7 +63,7 @@ class Dummy_Contact_Form
         }); */
 
 
-        add_action('admin_notices', array($this, 'dcf_new_version_notification'));
+        // add_action('admin_notices', array($this, 'dcf_new_version_notification'));
 
 
         // add_action('init', array($this, 'create_custom_post_type'));
@@ -79,7 +79,7 @@ class Dummy_Contact_Form
         // //register rest api
         // add_action('rest_api_init', array($this, 'register_rest_api'));
     }
-    function dcf_new_version_notification()
+    /*   function dcf_new_version_notification()
     {
         // Check for plugin update
         $current_version = '2.6.0';  // Replace with current version
@@ -92,7 +92,7 @@ class Dummy_Contact_Form
             </div>
         <?php
         }
-    }
+    } */
 
 
 
@@ -300,7 +300,7 @@ class Dummy_Contact_Form
     public function loadScripts()
     {
         // ob_start();
-        ?>
+?>
         <!-- <script>
             // (function($) {
             //     console.log('wow');
