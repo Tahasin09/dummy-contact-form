@@ -3,7 +3,7 @@
 Plugin Name: Dummy Contact Form
 Plugin URI: https://example.com/dummy-contact-form
 Description: A simple dummy contact form plugin for testing purposes.
-Version: 2.1.0
+Version: 2.2.0
 Author: Tahasin
 Author URI: https://w3eden.com
 License: GPL2
@@ -36,7 +36,7 @@ class Dummy_Contact_Form
                 'plugin_file'   => plugin_basename(__FILE__),
                 'slug'          => 'dummy-contact-form', // folder name
                 'name'          => 'Dummy Contact Form',
-                'version'       => '2.1.0',  // match your plugin header
+                'version'       => '2.2.0',  // match your plugin header
                 'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
                 'github_token'  => '', // optional, leave empty for public repo
                 // 'allow_prerelease' => true, // enable if you use beta releases
@@ -45,7 +45,7 @@ class Dummy_Contact_Form
             \UUPD\V1\UUPD_Updater_V1::register($updater_config);
         }, 1);
 
-        add_action('admin_notices', 'dcf_new_version_notification');
+        add_action('admin_notices', array($this, 'dcf_new_version_notification'));
 
 
         // add_action('init', array($this, 'create_custom_post_type'));
@@ -64,7 +64,7 @@ class Dummy_Contact_Form
     function dcf_new_version_notification()
     {
         // Check for plugin update
-        $current_version = '2.0.0';  // Replace with current version
+        $current_version = '2.2.0';  // Replace with current version
         $latest_version = get_option('dummy_contact_form_latest_version');  // This should come from your update system or manually set
 
         if ($latest_version && version_compare($latest_version, $current_version, '>')) {
