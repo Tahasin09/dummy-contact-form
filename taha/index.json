@@ -1,0 +1,26 @@
+{
+    "slug": "dummy-contact-form",
+    "name": "Dummy Contact Form",
+    "version": "2.12.0",
+    "author": "Tahasin",
+    "author_homepage": "https://w3eden.com",
+    "requires_php": "8.0",
+    "requires": "6.5",
+    "tested": "6.8.2",
+    "sections": {
+        "description": "A simple dummy contact form plugin for testing purposes.",
+        "installation": "1. Upload the `dummy-contact-form` folder to `/wp-content/plugins/`.\n2. Activate via 'Plugins' menu.\n3. Update as needed.",
+        "frequently_asked_questions": "= How do I modify the settings =\nThere are no settings for this plugin.",
+        "changelog": "<h4>2.11.0</h4><ul><li>Fixed: minor bug fixes</li></ul><h4>2.10.0</h4><ul><li>Initial release with basic contact form</li></ul>"
+    },
+    "last_updated": "2025-11-15 16:00:00",
+    "download_url": "https://github.com/Tahasin09/dummy-contact-form/releases/latest/download/dummy-contact-form.zip",
+    "banners": {
+        "low": "https://raw.githubusercontent.com/Tahasin09/dummy-contact-form/main/uupd/banner-772x250.png",
+        "high": "https://raw.githubusercontent.com/Tahasin09/dummy-contact-form/main/uupd/banner-1544x500.png"
+    },
+    "icons": {
+        "1x": "https://raw.githubusercontent.com/Tahasin09/dummy-contact-form/main/uupd/icon-128.png",
+        "2x": "https://raw.githubusercontent.com/Tahasin09/dummy-contact-form/main/uupd/icon-256.png"
+    }
+}

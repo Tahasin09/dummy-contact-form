@@ -3,7 +3,7 @@
 Plugin Name: Dummy Contact Form
 Plugin URI: https://example.com/dummy-contact-form
 Description: A simple dummy contact form plugin for testing purposes.
-Version: 2.11.0
+Version: 2.12.0
 Author: Tahasin
 Author URI: https://w3eden.com
 License: GPL2
@@ -31,22 +31,23 @@ class Dummy_Contact_Form
 
 
         add_action('plugins_loaded', function () {
+            // 1) Load the updater drop-in
             require_once __DIR__ . '/includes/updater.php';
 
-            \UUPD\V1\UUPD_Updater_V1::register([
-                'plugin_file'     => plugin_basename(__FILE__),      // Required: "my-plugin/my-plugin.php"
-                'slug'          => 'dummy-contact-form', // folder name
-                'name'          => 'Dummy Contact Form',
-                'version'       => '2.11.0',  // match your plugin header
-                'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
+            // 2) Build updater config
+            $updater_config = [
+                'plugin_file'      => plugin_basename(__FILE__), // "dummy-contact-form/dummy-contact-form.php"
+                'slug'             => 'dummy-contact-form',       // Must match your plugin folder
+                'name'             => 'Dummy Contact Form',       // Human-readable name
+                'version'          => '2.12.0',                  // Currently installed version
+                'key'              => 'YourSecretKeyHere',       // Optional secret
+                'server'           => 'https://raw.githubusercontent.com/Tahasin09/dummy-contact-form/master/taha/index.json', // URL to metadata JSON
+                'allow_prerelease' => false,                      // Optional: allow beta/rc updates
+            ];
 
-                // Optional keys:
-                'github_token'    => 'ghp_YourTokenHere',              // GitHub token (for private repos or rate limits)
-                'key'             => 'YourSecretKeyHere',              // Optional secret for private servers
-                'textdomain'      => 'dummy-contact-form',                 // Optional, defaults to slug
-                'allow_prerelease' => false,                            // Optional: allow beta/rc versions (default: false)
-            ]);
-        }, 1);
+            // 3) Register the updater
+            \UUPD\V1\UUPD_Updater_V1::register($updater_config);
+        }, 20);
     }
 
 
