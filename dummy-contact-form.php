@@ -27,72 +27,27 @@ class Dummy_Contact_Form
         add_action('plugins_loaded', array($this, 'initialize'));
 
         add_action('init', array($this, 'create_submission_page'));
+
+
+
         add_action('plugins_loaded', function () {
+            require_once __DIR__ . '/includes/updater.php';
 
-            require_once ABSPATH . 'wp-content/plugins/dummy-contact-form/includes/updater.php';
-
-
-            $updater_config = [
-                'plugin_file'   => plugin_basename(__FILE__),
+            \UUPD\V1\UUPD_Updater_V1::register([
+                'plugin_file'     => plugin_basename(__FILE__),      // Required: "my-plugin/my-plugin.php"
                 'slug'          => 'dummy-contact-form', // folder name
                 'name'          => 'Dummy Contact Form',
                 'version'       => '2.9.0',  // match your plugin header
                 'server'        => 'https://github.com/Tahasin09/dummy-contact-form',
-                'github_token'  => '', // optional, leave empty for public repo
-                // 'allow_prerelease' => true, // enable if you use beta releases
-            ];
 
-            \UUPD\V1\UUPD_Updater_V1::register($updater_config);
+                // Optional keys:
+                'github_token'    => 'ghp_YourTokenHere',              // GitHub token (for private repos or rate limits)
+                'key'             => 'YourSecretKeyHere',              // Optional secret for private servers
+                'textdomain'      => 'example-plugin',                 // Optional, defaults to slug
+                'allow_prerelease' => false,                            // Optional: allow beta/rc versions (default: false)
+            ]);
         }, 1);
-
-
-
-
-
-        /* add_action('admin_notices', function () {
-            $update_plugins = get_site_transient('update_plugins');
-            $plugin_file    = plugin_basename(__FILE__);
-
-            if (!empty($update_plugins->response[$plugin_file])) {
-                $new_version = $update_plugins->response[$plugin_file]->new_version; ?>
-                <div class="notice notice-success is-dismissible">
-                    <p><strong>Dummy Contact Form:</strong> New version <?php echo esc_html($new_version); ?> available. <a href="<?php echo admin_url('update.php?action=upgrade-plugin&plugin=' . $plugin_file); ?>">Update Now</a>.</p>
-                </div>
-        <?php
-            }
-        }); */
-
-
-        // add_action('admin_notices', array($this, 'dcf_new_version_notification'));
-
-
-        // add_action('init', array($this, 'create_custom_post_type'));
-        // add_action('admin_menu', array($this, 'add_custom_submenus'));
-        // add_action('wp_enqueue_scripts', array($this, 'loadAssets'));
-
-
-        // add_action('wp_footer', array($this, 'loadScripts'));
-
-        // add_shortcode('dummy_contact_form', array($this, 'render_contact_form'));
-
-
-        // //register rest api
-        // add_action('rest_api_init', array($this, 'register_rest_api'));
     }
-    /*   function dcf_new_version_notification()
-    {
-        // Check for plugin update
-        $current_version = '2.6.0';  // Replace with current version
-        $latest_version = get_option('dummy_contact_form_latest_version');  // This should come from your update system or manually set
-
-        if ($latest_version && version_compare($latest_version, $current_version, '>')) {
-?>
-            <div class="notice notice-success is-dismissible">
-                <p><strong>New Version Available:</strong> Version <?php echo esc_html($latest_version); ?> of Dummy Contact Form is now available. <a href="<?php echo admin_url('plugins.php'); ?>">Update Now</a>.</p>
-            </div>
-        <?php
-        }
-    } */
 
 
 
